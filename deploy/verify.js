@@ -11,30 +11,34 @@ async function verify() {
 
     // load config
     const config = JSON.parse(fs.readFileSync(`./deploy/configs/${CHAIN_NAME}.json`));
-    const {partyDAOMultisig, fractionalArtERC721VaultFactory, weth, foundationMarket, zoraAuctionHouse} = config;
+    const {partyDAOMultisig, fractionalArtERC721VaultFactory, weth, foundationMarket, zoraAuctionHouse, exodusMarketHouse} = config;
 
     // load deployed contracts
     const contracts = JSON.parse(fs.readFileSync(`./deploy/deployed-contracts/${CHAIN_NAME}.json`));
     const {partyBidFactory, partyBidLogic, marketWrappers} = contracts;
-    const {foundation, zora} = marketWrappers;
+    const {foundation, zora, exodus} = marketWrappers;
 
     console.log(`Verifying ${CHAIN_NAME}`);
 
-    // Verify PartyBid Factory
-    console.log(`Verify PartyBid Factory`);
-    await verifyContract(partyBidFactory, [partyDAOMultisig, fractionalArtERC721VaultFactory, weth]);
+    // // Verify PartyBid Factory
+    // console.log(`Verify PartyBid Factory`);
+    // await verifyContract(partyBidFactory, [partyDAOMultisig, fractionalArtERC721VaultFactory, weth]);
 
-    // Verify PartyBid Logic
-    console.log(`Verify PartyBid Logic`);
-    await verifyContract(partyBidLogic, [partyDAOMultisig, fractionalArtERC721VaultFactory, weth]);
+    // // Verify PartyBid Logic
+    // console.log(`Verify PartyBid Logic`);
+    // await verifyContract(partyBidLogic, [partyDAOMultisig, fractionalArtERC721VaultFactory, weth]);
 
-    // Verify Foundation Market Wrapper
-    console.log(`Verify Foundation Market Wrapper`);
-    await verifyContract(foundation, [foundationMarket]);
+    // // Verify Foundation Market Wrapper
+    // console.log(`Verify Foundation Market Wrapper`);
+    // await verifyContract(foundation, [foundationMarket]);
 
-    // Verify Zora Market Wrapper
-    console.log(`Verify Zora Market Wrapper`);
-    await verifyContract(zora, [zoraAuctionHouse]);
+    // // Verify Zora Market Wrapper
+    // console.log(`Verify Zora Market Wrapper`);
+    // await verifyContract(zora, [zoraAuctionHouse]);
+
+    // Verify Exodus Market Wrapper
+    console.log(`Verify Exodus Market Wrapper`);
+    await verifyContract(exodus, [exodusMarketHouse]);
 }
 
 /*

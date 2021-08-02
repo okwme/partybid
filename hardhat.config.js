@@ -54,6 +54,15 @@ module.exports = {
         },
       },
       {
+        version: '0.5.0',
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 2000000,
+          },
+        },
+      },
+      {
         version: '0.6.8',
         settings: {
           optimizer: {
